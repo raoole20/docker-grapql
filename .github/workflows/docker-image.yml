@@ -29,5 +29,5 @@ jobs:
         docker build -t raoole20/docker-grapql:0.0.2 .
     - name: DockerBuild
       run: | 
-        docker push raoole20/docker-grapql:0.0.2 .
+        docker push raoole20/docker-grapql:0.0.2 
     
