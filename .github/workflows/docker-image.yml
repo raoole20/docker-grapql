@@ -29,14 +29,17 @@ jobs:
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
-        NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS  
     - name: Docker Build
+      env:
+        NEW_VERSION: ${{ steps.version.outputs.version }}
       run: | 
         docker build -t raoole20/docker-grapql:$VERSION .
         docker build -t raoole20/docker-grapql .
     - name: DockerBuild
+      env:
+          NEW_VERSION: ${{ steps.version.outputs.version }}
       run: | 
         docker push raoole20/docker-grapql:$VERSION
         docker push raoole20/docker-grapql
